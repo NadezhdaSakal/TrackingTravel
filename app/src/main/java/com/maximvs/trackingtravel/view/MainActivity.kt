@@ -9,14 +9,20 @@ import com.maximvs.trackingtravel.databinding.ActivityMainBinding
 import com.maximvs.trackingtravel.view.fragments.*
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_main)
+
+
+
+
         setContentView(binding.root)
 
         initNavigation()
@@ -25,6 +31,8 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.fragment_container, RouteFragment())
             .commit()
+
+
     }
 
     fun startRequestFragment() {

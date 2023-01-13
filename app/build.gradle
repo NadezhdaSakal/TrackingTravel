@@ -90,6 +90,11 @@ dependencies {
     //Maps
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
+    //PreferenceManager
+    implementation "androidx.preference:preference-ktx:1.2.0"
+
+
+
 }
 kapt {
     correctErrorTypes = true

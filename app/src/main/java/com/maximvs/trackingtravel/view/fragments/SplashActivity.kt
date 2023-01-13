@@ -1,18 +1,25 @@
 package com.maximvs.trackingtravel.view.fragments
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.maximvs.trackingtravel.R
+import android.app.Application
+import android.content.Intent
+import androidx.preference.PreferenceManager
+import com.maximvs.trackingtravel.view.MainActivity
 
 
-class SplashActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        Thread.sleep(5000) // 1
-
-        setTheme(R.style.AppTheme) // 2
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+class SplashActivity : Application() {
+        override fun onCreate() {
+            super.onCreate()
+            val userInfo = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+            val editor = userInfo.edit()
+            val logedIn = userInfo.getBoolean("loggedIn", false)
+            if (logedIn) {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, StartActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
     }
-}
