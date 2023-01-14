@@ -9,20 +9,14 @@ import com.maximvs.trackingtravel.databinding.ActivityMainBinding
 import com.maximvs.trackingtravel.view.fragments.*
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
-
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initNavigation()
@@ -31,8 +25,6 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.fragment_container, RouteFragment())
             .commit()
-
-
     }
 
     fun startRequestFragment() {
@@ -44,8 +36,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startRouteFragment() {
-
-        // initNavigation()
 
         supportFragmentManager
             .beginTransaction()
@@ -67,19 +57,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-  /*  fun startDescriptionFragment(description: String) {
-        val bundle = Bundle()
-        bundle.putString("input", description)
-        val frag2 = DescriptionFragment()
-        frag2.arguments = bundle
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_container, frag2)
-            .addToBackStack(null)
-            .commit()
-    } */
-
     fun removeDetailsFragment() {
         supportFragmentManager
             .beginTransaction()
@@ -88,8 +65,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-     fun initNavigation() {
-        binding.bottomNavigation.setOnItemSelectedListener  {
+    fun initNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.route -> {
                     val tag = "route"
@@ -128,6 +105,3 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
-
-
-

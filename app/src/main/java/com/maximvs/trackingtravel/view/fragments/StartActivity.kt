@@ -23,4 +23,5 @@ class StartActivity : AppCompatActivity() {
 
     }
 
+
 }
