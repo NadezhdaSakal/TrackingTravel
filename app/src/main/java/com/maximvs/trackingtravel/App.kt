@@ -3,7 +3,8 @@ package com.maximvs.trackingtravel
 import android.app.Application
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
+import android.preference.PreferenceManager
+//import androidx.preference.PreferenceManager
 import com.maximvs.trackingtravel.view.MainActivity
 import com.maximvs.trackingtravel.view.fragments.StartActivity
 import dagger.hilt.android.HiltAndroidApp
