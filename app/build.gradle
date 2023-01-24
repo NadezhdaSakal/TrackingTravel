@@ -93,6 +93,10 @@ dependencies {
     //PreferenceManager
     implementation "androidx.preference:preference-ktx:1.2.0"
 
+    //Splash
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+
 
 
 }
