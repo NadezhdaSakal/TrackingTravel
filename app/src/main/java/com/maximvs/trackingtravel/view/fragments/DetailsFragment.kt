@@ -10,7 +10,6 @@ import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,6 +23,8 @@ import com.maximvs.trackingtravel.view.adapters.ViewPagerAdapter
 class DetailsFragment : Fragment() {
     private lateinit var route: Route
     private lateinit var binding: FragmentDetailsBinding
+    private var isFav: Boolean? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,12 +52,12 @@ class DetailsFragment : Fragment() {
             binding.description.layoutParams = params
         }
 
-        binding.detailsFabFavorites.setOnClickListener {
-            if (!route.isInFavorites) {
-                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_24)
+         binding.btnDetailFavorite.setOnClickListener {
+            if (it != null) {
+                binding.btnDetailFavorite.setImageResource(R.drawable.ic_baseline_favorite_white_24)
                 route.isInFavorites = true
             } else {
-                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.btnDetailFavorite.setImageResource(R.drawable.ic_baseline_favorite_white_border_24)
                 route.isInFavorites = false
             }
         }
@@ -109,11 +110,14 @@ class DetailsFragment : Fragment() {
             startActivity(mapIntent)
         }
 
-        binding.detailsFabFavorites.setImageResource(
-            if (route.isInFavorites) R.drawable.ic_baseline_favorite_24
-            else R.drawable.ic_baseline_favorite_border_24
+         binding.btnDetailFavorite.setImageResource(
+            if (route.isInFavorites) R.drawable.ic_baseline_favorite_white_24
+            else R.drawable.ic_baseline_favorite_white_border_24
         )
 
     }
+
+
+
 }
 

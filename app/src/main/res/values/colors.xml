@@ -8,6 +8,9 @@
     <color name="light_grey">#DDDDDD</color>
     <color name="orange">#ED6B48</color>
     <color name="secondary">#FEF1ED</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
 
 </resources>
 

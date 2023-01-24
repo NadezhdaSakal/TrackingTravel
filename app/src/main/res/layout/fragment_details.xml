@@ -29,14 +29,25 @@
         <TextView
             android:id="@+id/tv_search"
             style="@style/et_route_details_style"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
             android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:paddingStart="2dp"
             android:paddingTop="16dp"
             android:paddingEnd="12dp"
             android:paddingBottom="12dp"
             tools:text="Title" />
+
+        <ImageView
+            android:id="@+id/btn_detail_favorite"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/ic_baseline_favorite_white_border_24" />
 
     </LinearLayout>
 
@@ -69,18 +80,6 @@
                 android:layout_height="4dp"
                 app:tabIndicatorColor="@color/orange"
                 app:tabIndicatorHeight="4dp" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/details_fab_favorites"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                app:borderWidth="0dp"
-                android:backgroundTint="@android:color/transparent"
-                android:layout_gravity="end|bottom"
-                app:srcCompat="@drawable/ic_baseline_favorite_border_24"
-                app:tint="@color/orange"/>
 
             <TextView
                 android:id="@+id/title"
