@@ -1,10 +1,10 @@
 package com.maximvs.trackingtravel.view.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.databinding.FragmentFavoritesBinding
@@ -25,19 +25,26 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Получаем список при транзакции фрагмента
         val favoritesList: List<Route> = emptyList()
 
+
         binding.favoritesRecycler.apply {
-            routesAdapter = RouteListRecyclerAdapter(object : RouteListRecyclerAdapter.OnItemClickListener {
-                override fun click(route: Route) {
-                    (requireActivity() as MainActivity).launchDetailsFragment(route)
-                }
-            })
+            routesAdapter =
+                RouteListRecyclerAdapter(object : RouteListRecyclerAdapter.OnItemClickListener {
+                    override fun click(route: Route) {
+                        (requireActivity() as MainActivity).launchDetailsFragment(route)
+                    }
+                })
+            //Присваиваем адаптер
             adapter = routesAdapter
+            //Присвои layoutmanager
             layoutManager = LinearLayoutManager(requireContext())
-            val decorator = TopSpacingItemDecoration(5)
+            //Применяем декоратор для отступов
+            val decorator = TopSpacingItemDecoration(8)
             addItemDecoration(decorator)
         }
+        //Кладем нашу БД в RV
         routesAdapter.addItems(favoritesList)
     }
 }

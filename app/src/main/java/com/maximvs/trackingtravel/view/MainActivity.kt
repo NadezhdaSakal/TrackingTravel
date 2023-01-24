@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
 
     fun startRouteFragment() {
 
-        // initNavigation()
-
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, RouteFragment())
@@ -59,19 +57,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-  /*  fun startDescriptionFragment(description: String) {
-        val bundle = Bundle()
-        bundle.putString("input", description)
-        val frag2 = DescriptionFragment()
-        frag2.arguments = bundle
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_container, frag2)
-            .addToBackStack(null)
-            .commit()
-    } */
-
     fun removeDetailsFragment() {
         supportFragmentManager
             .beginTransaction()
@@ -80,8 +65,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-     fun initNavigation() {
-        binding.bottomNavigation.setOnItemSelectedListener  {
+    fun initNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.route -> {
                     val tag = "route"
@@ -120,6 +105,3 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
-
-
-
