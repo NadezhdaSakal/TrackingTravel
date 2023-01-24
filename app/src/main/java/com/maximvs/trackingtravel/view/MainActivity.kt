@@ -9,6 +9,7 @@ import com.maximvs.trackingtravel.databinding.ActivityMainBinding
 import com.maximvs.trackingtravel.view.fragments.*
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         initNavigation()
 
@@ -68,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     fun initNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.route -> {
+                com.maximvs.trackingtravel.R.id.route -> {
                     val tag = "route"
                     val fragment = checkFragmentExistence(tag)
                     //В первом параметре, если фрагмент не найден и метод вернул null, то с помощью
