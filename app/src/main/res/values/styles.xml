@@ -70,6 +70,7 @@
         <item name="searchIcon">@drawable/ic_baseline_search_24</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/orange</item>
+        <item name="android:queryHint">@color/black</item>
     </style>
 
     <style name="RouteFragmentRouteStyle">
