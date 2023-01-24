@@ -26,6 +26,7 @@ class SplashScreenActivity : AppCompatActivity() {
         }, Constants.SPLASH_SCREEN_TIMING.toLong())
     }
 
+    @Suppress("DEPRECATION")
     private fun makeFullScreen() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
