@@ -1,6 +1,9 @@
 package com.maximvs.trackingtravel
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import dagger.hilt.android.HiltAndroidApp
 
 
@@ -19,3 +22,6 @@ class App : Application() {
             private set
     }
 }
+
+
+
