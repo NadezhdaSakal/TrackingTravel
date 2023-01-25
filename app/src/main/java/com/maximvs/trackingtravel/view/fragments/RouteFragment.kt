@@ -62,11 +62,17 @@ class RouteFragment : Fragment() {
         }
 
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
+            // setOnQueryTextListener - слушатель того, что набирается в поисковой строке, ищет
+            // совпадения в базе данных, последовательно по каждой новой написанной букве
+            override fun onQueryTextSubmit(query: String?): Boolean {  // этот метод - для поиска по
+                //  нажатию на лупу на клавиатуре, query - просто имя переменной, может быть любым
+                return false  // return true - если используем этот метод, сейчас при нажатии лупы
+                              // клавиатура скрывается
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
+            override fun onQueryTextChange(newText: String): Boolean { // этот метод - для поиска по
+                // добавленным буквам, сначало по одной, затем - по двум - и сразу выдант результат
+                // newText - переменная, в зависимости от версии Андроид может называться по-разному, ни на что не влияет
                 if (newText.isEmpty()) {
                     routesAdapter.addItems(routesDataBase)
                     return true
