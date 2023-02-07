@@ -1,20 +1,21 @@
 package com.maximvs.trackingtravel.view.fragments
 
+import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.databinding.FragmentFavoritesBinding
 import com.maximvs.trackingtravel.view.MainActivity
 import com.maximvs.trackingtravel.view.TopSpacingItemDecoration
 import com.maximvs.trackingtravel.view.adapters.RouteListRecyclerAdapter
+import androidx.fragment.app.Fragment
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment {
     private lateinit var routesAdapter: RouteListRecyclerAdapter
     private lateinit var binding: FragmentFavoritesBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,17 +26,14 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Получаем список при транзакции фрагмента
         val favoritesList: List<Route> = emptyList()
 
-
         binding.favoritesRecycler.apply {
-            routesAdapter =
-                RouteListRecyclerAdapter(object : RouteListRecyclerAdapter.OnItemClickListener {
-                    override fun click(route: Route) {
-                        (requireActivity() as MainActivity).launchDetailsFragment(route)
-                    }
-                })
+            routesAdapter = RouteListRecyclerAdapter(object : RouteListRecyclerAdapter.OnItemClickListener {
+                override fun click(route: Route) {
+                    (requireActivity() as MainActivity).launchDetailsFragment(route)
+                }
+            })
             //Присваиваем адаптер
             adapter = routesAdapter
             //Присвои layoutmanager
