@@ -1,6 +1,5 @@
 package com.maximvs.trackingtravel.view.fragments
 
-import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,9 @@ import com.maximvs.trackingtravel.view.MainActivity
 import com.maximvs.trackingtravel.view.TopSpacingItemDecoration
 import com.maximvs.trackingtravel.view.adapters.RouteListRecyclerAdapter
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 
-class FavoritesFragment : Fragment {
+class FavoritesFragment : Fragment() {
     private lateinit var routesAdapter: RouteListRecyclerAdapter
     private lateinit var binding: FragmentFavoritesBinding
 

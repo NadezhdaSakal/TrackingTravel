@@ -44,6 +44,4 @@
         android:indeterminateTint="@color/orange"
         tools:ignore="MissingConstraints" />
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
