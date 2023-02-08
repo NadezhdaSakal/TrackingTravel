@@ -20,6 +20,10 @@ import com.maximvs.trackingtravel.view.MainActivity
 import com.maximvs.trackingtravel.view.adapters.ViewPagerAdapter
 
 
+// проблема1: иконка избранное по клику меняет окраску, но маршрут не попадает в избранное
+// проблема2: по повторному нажатию не скрывается расширенное описание маршрута
+// желателен прогресс бар при загрузке фоток в ресайклер
+
 class DetailsFragment : Fragment() {
     private lateinit var route: Route
     private lateinit var binding: FragmentDetailsBinding
@@ -78,7 +82,7 @@ class DetailsFragment : Fragment() {
         //Передаем список в адаптер
         pagerAdapter.addItems(pagerItems)
 
-        TabLayoutMediator(binding.fDetTabs, binding.viewPager2) { tab, position ->
+        TabLayoutMediator(binding.fDetTabs, binding.viewPager2) { tab, position -> // полоса прокрутки под фотками ресайклер, узенькая оранжевая
             tab.text = "TAB ${(position + 1)}"
         }.attach()
     }
@@ -110,7 +114,7 @@ class DetailsFragment : Fragment() {
             startActivity(mapIntent)
         }
 
-         binding.btnDetailFavorite.setImageResource(
+         binding.btnDetailFavorite.setImageResource( // ??? Вроде есть уже
             if (route.isInFavorites) R.drawable.ic_baseline_favorite_white_24
             else R.drawable.ic_baseline_favorite_white_border_24
         )

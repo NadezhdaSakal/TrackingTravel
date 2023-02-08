@@ -18,7 +18,7 @@ import com.maximvs.trackingtravel.databinding.FragmentRequestBinding
 import com.maximvs.trackingtravel.view.MainActivity
 
 
-class RequestFragment : Fragment() {
+class RequestFragment : Fragment() { // фрагмент разрешения доступа к геолокации
 
     private lateinit var binding: FragmentRequestBinding
 

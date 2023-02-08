@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.maximvs.trackingtravel.databinding.FragmentSettingsBinding
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment() { // фрагмент для настроек
     private lateinit var binding: FragmentSettingsBinding
 
 

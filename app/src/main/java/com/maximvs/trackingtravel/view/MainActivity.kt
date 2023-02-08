@@ -68,14 +68,15 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun initNavigation() {
+    fun initNavigation() { // навигация меню боттомбара
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                com.maximvs.trackingtravel.R.id.route -> {
+                com.maximvs.trackingtravel.
+                R.id.route -> {
                     val tag = "route"
                     val fragment = checkFragmentExistence(tag)
                     //В первом параметре, если фрагмент не найден и метод вернул null, то с помощью
-                    //элвиса мы вызываем создание нвого фрагмента
+                    //элвиса мы вызываем создание нового фрагмента
                     changeFragment(fragment ?: RouteFragment(), tag)
                     true
                 }
