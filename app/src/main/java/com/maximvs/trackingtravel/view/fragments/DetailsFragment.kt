@@ -10,6 +10,7 @@ import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
@@ -43,20 +44,27 @@ class DetailsFragment : Fragment() {
 
         setRoutesDetails()
 
-        var expanded = false
-        val transitionSet = TransitionSet()
-            .addTransition(ChangeBounds())
-            .addTransition(ChangeImageTransform())
+        var expanded = false // создана переменная для поочередной работы кнопки tvDetShowDesc
+        val transitionSet =
+            TransitionSet() // TransitionSet() - наследник Transition, представляет из себя набор других Transition, выполняющихся по очереди или одновременно.
+                .addTransition(ChangeBounds()) // ChangeBounds() - Transition, который отвечает за изменение координат View внутри layout и его размеров.
+                .addTransition(ChangeImageTransform()) // ChangeImageTransform() - анимирует матричный переход изображения для плавного изменения размеров
 
         binding.tvDetShowDesc.setOnClickListener {
-            expanded = !expanded
+            expanded = !expanded // при каждом клике expanded меняет значение на противоположное
             TransitionManager.beginDelayedTransition(binding.sceneRoot, transitionSet)
-            val params: ViewGroup.LayoutParams =  binding.description.layoutParams
-            params.height = if (expanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
-            binding.description.layoutParams = params
+            val params: ViewGroup.LayoutParams = binding.description.layoutParams // здесь в переменную закладываются параметры description
+            if (expanded) { // если expanded == true...
+                params.height = ViewGroup.LayoutParams.WRAP_CONTENT // ...то высота description в соответствии с содержимым, т.е. полным описанием
+                binding.tvDetShowDesc.setText(R.string.hide_description) // и tvDetShowDesc меняет текст на "скрыть описание"
+            } else { // в противном случае (т.е. если expanded == false...
+                params.height = getResources().getDimensionPixelSize(R.dimen.text_view_height) // высота description будет как указано в dimen, т.е.в изначальной верстке
+                binding.tvDetShowDesc.setText(R.string.show_description) // и tvDetShowDesc меняет текст на "Показать описание"
+            }
+            binding.description.layoutParams = params // применяем выбранноу высоту к description
         }
 
-         binding.btnDetailFavorite.setOnClickListener {
+        binding.btnDetailFavorite.setOnClickListener {
             if (it != null) {
                 binding.btnDetailFavorite.setImageResource(R.drawable.ic_baseline_favorite_white_24)
                 route.isInFavorites = true
@@ -82,7 +90,10 @@ class DetailsFragment : Fragment() {
         //Передаем список в адаптер
         pagerAdapter.addItems(pagerItems)
 
-        TabLayoutMediator(binding.fDetTabs, binding.viewPager2) { tab, position -> // полоса прокрутки под фотками ресайклер, узенькая оранжевая
+        TabLayoutMediator(
+            binding.fDetTabs,
+            binding.viewPager2
+        ) { tab, position -> // полоса прокрутки под фотками ресайклер, узенькая оранжевая
             tab.text = "TAB ${(position + 1)}"
         }.attach()
     }
@@ -114,14 +125,11 @@ class DetailsFragment : Fragment() {
             startActivity(mapIntent)
         }
 
-         binding.btnDetailFavorite.setImageResource( // ??? Вроде есть уже
+        binding.btnDetailFavorite.setImageResource( // ??? Вроде есть уже
             if (route.isInFavorites) R.drawable.ic_baseline_favorite_white_24
             else R.drawable.ic_baseline_favorite_white_border_24
         )
 
     }
-
-
-
 }
 

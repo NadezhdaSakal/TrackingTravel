@@ -18,6 +18,7 @@
     <string name="distance">Расстояние</string>
     <string name="point">Высшая точка</string>
     <string name="show_description">Показать описание маршрута</string>
+    <string name="hide_description">Скрыть описание маршрута</string>
     <string name="toast_denied">В разрешении отказано</string>
     <string name="toast_denied_forever">В разрешении отказано навсегда</string>
     <string name="alert_dialog_title">В разрешении отказано</string>

@@ -13,6 +13,7 @@
     <string name="distance">Distance</string>
     <string name="point">High peak</string>
     <string name="show_description">Show description</string>
+    <string name="hide_description">Hide description</string>
     <string name="toast_denied">Permission denied</string>
     <string name="alert_dialog_title">Permission denied</string>
     <string name="toast_denied_forever">Permission denied forever</string>
