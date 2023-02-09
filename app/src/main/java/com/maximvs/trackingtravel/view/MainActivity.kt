@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    /*
+
     fun startRequestFragment() {
         supportFragmentManager
             .beginTransaction()
@@ -38,14 +40,14 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun startRouteFragment() {
+   fun startRouteFragment() {
 
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, RouteFragment())
             .addToBackStack(null)
             .commit()
-    }
+    } */
 
     fun launchDetailsFragment(route: Route) {
         val bundle = Bundle()
