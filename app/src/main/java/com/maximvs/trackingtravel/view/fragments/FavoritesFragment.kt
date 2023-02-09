@@ -13,30 +13,34 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 
 class FavoritesFragment : Fragment() {
-    private lateinit var routesAdapter: RouteListRecyclerAdapter
+
     private lateinit var binding: FragmentFavoritesBinding
+    private lateinit var routesAdapter: RouteListRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Inflate the layout for this fragment
         binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Получаем список при транзакции фрагмента
         val favoritesList: List<Route> = emptyList()
 
         binding.favoritesRecycler.apply {
-            routesAdapter = RouteListRecyclerAdapter(object : RouteListRecyclerAdapter.OnItemClickListener {
-                override fun click(route: Route) {
-                    (requireActivity() as MainActivity).launchDetailsFragment(route)
-                }
-            })
+            routesAdapter =
+                RouteListRecyclerAdapter(object : RouteListRecyclerAdapter.OnItemClickListener {
+                    override fun click(route: Route) {
+                        (requireActivity() as MainActivity).launchDetailsFragment(route)
+                    }
+                })
             //Присваиваем адаптер
             adapter = routesAdapter
-            //Присвои layoutmanager
+            //Присвоили layoutmanager
             layoutManager = LinearLayoutManager(requireContext())
             //Применяем декоратор для отступов
             val decorator = TopSpacingItemDecoration(8)

@@ -13,4 +13,5 @@ interface RouteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Route>)
+
 }

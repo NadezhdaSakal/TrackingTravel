@@ -19,4 +19,5 @@ constructor(
     fun getAllFromDB(): List<Route> {
         return routeDao.getCachedRoutes()
     }
+
 }

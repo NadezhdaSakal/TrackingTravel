@@ -10,7 +10,6 @@ import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
@@ -19,6 +18,7 @@ import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.databinding.FragmentDetailsBinding
 import com.maximvs.trackingtravel.view.MainActivity
 import com.maximvs.trackingtravel.view.adapters.ViewPagerAdapter
+import com.maximvs.trackingtravel.view.fragments.FavoritesFragment
 
 
 // проблема1: иконка избранное по клику меняет окраску, но маршрут не попадает в избранное
@@ -28,7 +28,6 @@ import com.maximvs.trackingtravel.view.adapters.ViewPagerAdapter
 class DetailsFragment : Fragment() {
     private lateinit var route: Route
     private lateinit var binding: FragmentDetailsBinding
-    private var isFav: Boolean? = null
 
 
     override fun onCreateView(
@@ -132,4 +131,3 @@ class DetailsFragment : Fragment() {
 
     }
 }
-

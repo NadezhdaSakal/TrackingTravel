@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    /*
+
     fun startRequestFragment() {
         supportFragmentManager
             .beginTransaction()
@@ -38,14 +40,14 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun startRouteFragment() {
+   fun startRouteFragment() {
 
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, RouteFragment())
             .addToBackStack(null)
             .commit()
-    }
+    } */
 
     fun launchDetailsFragment(route: Route) {
         val bundle = Bundle()
@@ -55,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container, fragment)
+            .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
     }
@@ -71,7 +73,6 @@ class MainActivity : AppCompatActivity() {
     fun initNavigation() { // навигация меню боттомбара
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                com.maximvs.trackingtravel.
                 R.id.route -> {
                     val tag = "route"
                     val fragment = checkFragmentExistence(tag)
