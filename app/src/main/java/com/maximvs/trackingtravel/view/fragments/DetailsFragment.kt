@@ -64,7 +64,7 @@ class DetailsFragment : Fragment() {
         }
 
         binding.btnDetailFavorite.setOnClickListener {
-            if (it != null) {
+            if (!route.isInFavorites) {
                 binding.btnDetailFavorite.setImageResource(R.drawable.ic_baseline_favorite_white_24)
                 route.isInFavorites = true
             } else {
