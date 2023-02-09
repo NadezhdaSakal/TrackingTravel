@@ -5,8 +5,7 @@
         android:id="@+id/route"
         android:icon="@drawable/ic_outline_home_24"
         android:title="@string/route"
-        app:showAsAction="withText"
-        app:background="@drawable/background_home_icon"/>
+        app:showAsAction="withText" />
 
     <item
         android:id="@+id/favorites"
