@@ -38,6 +38,7 @@
             android:paddingTop="16dp"
             android:paddingEnd="12dp"
             android:paddingBottom="12dp"
+            android:textColor="@color/white"
             tools:text="Title" />
 
         <ImageView
