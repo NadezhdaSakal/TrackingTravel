@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container, fragment)
+            .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
     }
@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
     fun initNavigation() { // навигация меню боттомбара
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                com.maximvs.trackingtravel.
                 R.id.route -> {
                     val tag = "route"
                     val fragment = checkFragmentExistence(tag)
