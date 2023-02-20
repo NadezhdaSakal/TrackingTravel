@@ -34,6 +34,15 @@
         <item name="cornerRadius">72dp</item>
     </style>
 
+    <style name="Button_Country">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
     <style name="Button_Allow">
         <item name="android:layout_width">164dp</item>
         <item name="android:layout_height">72dp</item>
@@ -84,6 +93,11 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@mipmap/ic_launcher</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/orange</item>
+        <item name="colorControlActivated">@color/orange</item>
     </style>
 
 
