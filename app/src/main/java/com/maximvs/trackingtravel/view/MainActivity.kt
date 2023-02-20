@@ -70,6 +70,14 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    fun startCountryFragment() {
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_container, CountryFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
     fun initNavigation() { // навигация меню боттомбара
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {

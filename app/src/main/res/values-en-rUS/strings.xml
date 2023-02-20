@@ -25,4 +25,9 @@
     <string name="req_text_2">Your location will be used to display your position on the map</string>
     <string name="uploaded">Uploaded</string>
     <string name="favorites">Favorites</string>
+    <string name="country_selection">Country selection</string>
+    <string name="england">England</string>
+    <string name="holland">Holland</string>
+    <string name="montenegro">Montenegro</string>
+    <string name="hello_blank_fragment">Hello_blank_fragment</string>
 </resources>

@@ -54,6 +54,10 @@ class RouteFragment : Fragment() {
         ) {
             routesDataBase = it
         }
+
+        binding.frRouteBtnCountry.setOnClickListener {// вызов фрагмента с выбором страны
+            (activity as MainActivity).startCountryFragment()
+        }
     }
 
     private fun initSearchView() {
