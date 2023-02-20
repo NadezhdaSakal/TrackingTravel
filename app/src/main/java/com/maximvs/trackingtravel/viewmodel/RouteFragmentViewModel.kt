@@ -16,7 +16,6 @@ class RouteFragmentViewModel @Inject constructor(
 
     val routesListLiveData: MutableLiveData<List<Route>> = MutableLiveData()
 
-
     init {
         interactor.getRoutesFromApi(object : ApiCallback {
             override fun onSuccess(routes: List<Route>) {
@@ -30,7 +29,6 @@ class RouteFragmentViewModel @Inject constructor(
             }
         })
     }
-
     interface ApiCallback {
         fun onSuccess(routes: List<Route>)
         fun onFailure()

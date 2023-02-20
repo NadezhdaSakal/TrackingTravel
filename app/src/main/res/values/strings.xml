@@ -34,6 +34,7 @@
     <string name="button_england">Англия</string>
     <string name="button_montenegro">Черногория</string>
     <string name="button_netherlands">Нидерланды</string>
+    <string name="hello_blank_fragment">Hello!</string>
 
 
 </resources>
