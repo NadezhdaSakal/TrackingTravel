@@ -7,12 +7,13 @@
     android:background="#99000000"
     tools:context=".view.fragments.CountryFragment">
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/background_details"
         android:orientation="vertical"
+        android:layout_margin="@dimen/margin_8"
+        android:background="@drawable/background_details"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,64 +23,55 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/country_selection"
+            android:layout_marginVertical="@dimen/margin_16"
             android:gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:text="@string/radio_group_header"
             android:textColor="@color/orange"
             android:textSize="24dp"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnSelectCountry1"
-            style="@style/Button_Start"
+        <RadioButton
+            android:id="@+id/btnSelectEngland"
+            android:text="@string/button_england"
             android:layout_width="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16"
             android:layout_marginBottom="16dp"
             android:stateListAnimator="@null"
-            android:text="@string/england"
-            android:textSize="20dp"
             android:textAllCaps="false"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </Button>
-
-        <Button
-            android:id="@+id/btnSelectCountry2"
-            style="@style/Button_Start"
+        <RadioButton
+            android:id="@+id/btnSelectNetherlands"
             android:layout_width="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16"
             android:layout_marginBottom="16dp"
             android:stateListAnimator="@null"
-            android:text="@string/holland"
-            android:textSize="20dp"
+            android:text="@string/button_netherlands"
             android:textAllCaps="false"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSelectCountry1">
+            app:layout_constraintTop_toBottomOf="@id/btnSelectEngland" />
 
-        </Button>
 
-        <Button
-            android:id="@+id/btnSelectCountry3"
-            style="@style/Button_Start"
+        <RadioButton
+            android:id="@+id/btnSelectMontenegro"
             android:layout_width="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             android:stateListAnimator="@null"
-            android:text="@string/montenegro"
-            android:textSize="20dp"
+            android:text="@string/button_montenegro"
             android:textAllCaps="false"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent" />
 
-        </Button>
-    </LinearLayout>
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,13 +27,13 @@
     Хотите перейти в настройки?</string>
     <string name="alert_dialog_set_positive">Перейти</string>
     <string name="toast_GPS_on">Геолокация включена</string>
-    <string name="country_selection">Выберите страну</string>
-    <string name="england">Англия</string>
-    <string name="holland">Голландия</string>
-    <string name="montenegro">Черногория</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Новый фрагмент</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="radio_group_header">Выбор страны</string>
+    <string name="button_england">Англия</string>
+    <string name="button_montenegro">Черногория</string>
+    <string name="button_netherlands">Нидерланды</string>
 
 
 </resources>

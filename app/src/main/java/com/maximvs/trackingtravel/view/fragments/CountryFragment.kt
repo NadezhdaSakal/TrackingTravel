@@ -1,13 +1,11 @@
 package com.maximvs.trackingtravel.view.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.maximvs.trackingtravel.R
+import androidx.fragment.app.Fragment
 import com.maximvs.trackingtravel.databinding.FragmentCountryBinding
-import com.maximvs.trackingtravel.databinding.FragmentSettingsBinding
 
 
 class CountryFragment : Fragment() {
