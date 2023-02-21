@@ -2,7 +2,6 @@ package com.maximvs.trackingtravel.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.maximvs.trackingtravel.App
 import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.domain.Interactor
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +13,6 @@ import javax.inject.Inject
 
     var interactor: Interactor? = null
         @Inject set
-
 
     val routesListLiveData: MutableLiveData<List<Route>> = MutableLiveData()
 

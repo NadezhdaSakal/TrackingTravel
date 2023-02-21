@@ -52,16 +52,16 @@ class RouteFragment : Fragment() {
 
         initRecycler()
 
+        binding.frRouteBtnCountry.setOnClickListener {// вызов фрагмента с выбором страны
+            (activity as MainActivity).startCountryFragment()
+        }
+
         routeFragmentViewModel.routesListLiveData.observe(
             viewLifecycleOwner
         ) {
             routesDataBase = it
             routesAdapter.addItems(it)
 
-        }
-
-        binding.frRouteBtnCountry.setOnClickListener {// вызов фрагмента с выбором страны
-            (activity as MainActivity).startCountryFragment()
         }
     }
 
