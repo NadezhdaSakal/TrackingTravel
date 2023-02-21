@@ -30,4 +30,5 @@
     <string name="button_netherlands">Netherlands</string>
     <string name="button_montenegro">Montenegro</string>
     <string name="hello_blank_fragment">Hello!</string>
+    <string name="button_all">All</string>
 </resources>

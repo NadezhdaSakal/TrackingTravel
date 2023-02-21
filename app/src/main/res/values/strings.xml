@@ -35,6 +35,7 @@
     <string name="button_montenegro">Черногория</string>
     <string name="button_netherlands">Нидерланды</string>
     <string name="hello_blank_fragment">Hello!</string>
+    <string name="button_all">Все</string>
 
 
 </resources>
