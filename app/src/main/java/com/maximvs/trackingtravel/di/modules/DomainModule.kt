@@ -18,19 +18,25 @@ object DomainModule {
     //Нам нужно контекст как-то провайдить, поэтому создаем такой метод
     @Provides
     @Singleton
-    fun provideContext(@ApplicationContext context: Context
+    fun provideContext(
+        @ApplicationContext context: Context
     ) = context
 
     //Создаем экземпляр SharedPreferences
     @Singleton
     @Provides
-    fun providePreferences(context: Context) = PreferenceProvider(context)
+    fun providePreferences(
+        context: Context
+    ) = PreferenceProvider(context)
 
+    @Singleton
     @Provides
     fun provideInteractor(
-        repository: MainRepository, travelAPI: TrackingTravelAPI,
+        repository: MainRepository,
+        travelAPI: TrackingTravelAPI,
         preferenceProvider: PreferenceProvider
     ) =
         Interactor(repo = repository, retrofitService = travelAPI, preferences = preferenceProvider)
 }
+
 

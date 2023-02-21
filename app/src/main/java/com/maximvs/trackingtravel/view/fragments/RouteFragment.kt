@@ -101,7 +101,7 @@ class RouteFragment : Fragment() {
         binding.pullToRefresh.setOnRefreshListener {
             //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
             routesAdapter.items.clear()
-            //Делаем новый запрос фильмов на сервер
+            //Делаем новый запрос на сервер
             routeFragmentViewModel.getRoutes()
             //Убираем крутящиеся колечко
             binding.pullToRefresh.isRefreshing = false

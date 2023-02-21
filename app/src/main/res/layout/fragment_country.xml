@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#99000000"
-    tools:context=".view.fragments.CountryFragment">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/country_fragment_root"
+android:background="@color/country_back"
+tools:context=".view.fragments.SettingsFragment">
 
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8"
-        android:background="@drawable/background_details"
-        android:orientation="vertical"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -40,11 +33,8 @@
             android:stateListAnimator="@null"
             android:text="@string/button_england"
             android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/text_color"
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/btnSelectNetherlands"
@@ -56,11 +46,8 @@
             android:buttonTint="@color/orange"
             android:text="@string/button_netherlands"
             android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSelectEngland" />
+            android:textColor="@color/text_color"
+            android:textSize="20dp" />
 
 
         <RadioButton
@@ -73,11 +60,8 @@
             android:buttonTint="@color/orange"
             android:text="@string/button_montenegro"
             android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textColor="@color/text_color"
+            android:textSize="20dp" />
 
     </RadioGroup>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
