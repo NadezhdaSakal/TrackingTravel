@@ -31,22 +31,6 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/btnSelectAll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_16"
-            android:layout_marginBottom="16dp"
-            android:buttonTint="@color/orange"
-            android:stateListAnimator="@null"
-            android:text="@string/button_all"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RadioButton
             android:id="@+id/btnSelectEngland"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -28,7 +28,6 @@ class CountryFragment : Fragment() {
         //Слушаем какой у нас сейчас выбран вариант в настройках
         viewModel.countryPropertyLifeData.observe(viewLifecycleOwner, Observer<String> {
             when(it) {
-                ALL_COUNTRY -> binding.radioGroup.check(R.id.btnSelectAll)
                 ENGLAND_COUNTRY -> binding.radioGroup.check(R.id.btnSelectEngland)
                 NETHERLANDS_COUNTRY -> binding.radioGroup.check(R.id.btnSelectNetherlands)
                 MONTENEGRO_COUNTRY -> binding.radioGroup.check(R.id.btnSelectMontenegro)
@@ -37,7 +36,6 @@ class CountryFragment : Fragment() {
         //Слушатель для отправки нового состояния в настройки
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId) {
-                R.id.btnSelectAll -> viewModel.putCountryProperty(0)
                 R.id.btnSelectEngland -> viewModel.putCountryProperty(2)
                 R.id.btnSelectNetherlands -> viewModel.putCountryProperty(3)
                 R.id.btnSelectMontenegro -> viewModel.putCountryProperty(1)
@@ -45,7 +43,6 @@ class CountryFragment : Fragment() {
         }
     }
     companion object {
-        private const val ALL_COUNTRY = "all"
         private const val ENGLAND_COUNTRY = "England"
         private const val NETHERLANDS_COUNTRY = "Netherlands"
         private const val MONTENEGRO_COUNTRY = "Montenegro"

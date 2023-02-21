@@ -11,7 +11,7 @@ import com.maximvs.trackingtravel.view.viewHolders.ViewHolder
 
 class RouteListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val items = mutableListOf<Route>()
+    val items = mutableListOf<Route>()
 
     override fun getItemCount() = items.size
 

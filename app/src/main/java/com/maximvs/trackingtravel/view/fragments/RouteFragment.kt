@@ -8,7 +8,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.maximvs.trackingtravel.R
 import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.databinding.FragmentRouteBinding
 import com.maximvs.trackingtravel.view.MainActivity
@@ -21,6 +20,7 @@ import java.util.*
 @AndroidEntryPoint
 class RouteFragment : Fragment() {
     private val routeFragmentViewModel: RouteFragmentViewModel by viewModels()
+
     private lateinit var routesAdapter: RouteListRecyclerAdapter
     private lateinit var binding: FragmentRouteBinding
     private var routesDataBase = listOf<Route>()
@@ -48,11 +48,16 @@ class RouteFragment : Fragment() {
 
         initSearchView()
 
+        initPullToRefresh()
+
         initRecycler()
+
         routeFragmentViewModel.routesListLiveData.observe(
             viewLifecycleOwner
         ) {
             routesDataBase = it
+            routesAdapter.addItems(it)
+
         }
 
         binding.frRouteBtnCountry.setOnClickListener {// вызов фрагмента с выбором страны
@@ -89,6 +94,18 @@ class RouteFragment : Fragment() {
                 return true
             }
         })
+    }
+
+    private fun initPullToRefresh() {
+        //Вешаем слушатель, чтобы вызвался pull to refresh
+        binding.pullToRefresh.setOnRefreshListener {
+            //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
+            routesAdapter.items.clear()
+            //Делаем новый запрос фильмов на сервер
+            routeFragmentViewModel.getRoutes()
+            //Убираем крутящиеся колечко
+            binding.pullToRefresh.isRefreshing = false
+        }
     }
 
     private fun initRecycler() {
