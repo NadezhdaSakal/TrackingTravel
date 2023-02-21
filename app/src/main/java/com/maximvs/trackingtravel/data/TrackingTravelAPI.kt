@@ -6,11 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface TrackingTravelAPI {
-    @GET("test-routes/1")
+    @GET("test-routes/{country_id}")
     fun getAllRoutes(
         @Path("country_id") country_id: Int
 
-    ) : Call<List<TT_Route>>
-
+    ): Call<List<TT_Route>>
 
 }
