@@ -10,7 +10,7 @@ class PreferenceProvider(context: Context) {
     companion object {
         private const val KEY_FIRST_LAUNCH = "first_launch"
         private const val KEY_DEFAULT_COUNTRY = "default_country"
-        private const val DEFAULT_COUNTRY = 1
+        private const val DEFAULT_COUNTRY = "Montenegro"
     }
 
     //контекст приложения
@@ -18,26 +18,26 @@ class PreferenceProvider(context: Context) {
 
     //экземпляр SharedPreferences
     private val preference: SharedPreferences =
-        appContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
+        appContext.getSharedPreferences("country", Context.MODE_PRIVATE)
 
     init {
         //Логика для первого запуска приложения, чтобы положить настройки,
         //Сюда потом можно добавить и другие настройки
         if (preference.getBoolean(KEY_FIRST_LAUNCH, false)) {
-            preference.edit { putInt(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY) }
+            preference.edit { putString(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY) }
             preference.edit { putBoolean(KEY_FIRST_LAUNCH, false) }
         }
     }
 
     //Country prefs
     //Сохраняем страну
-    fun saveDefaultCountry(country_id: Int) {
-        preference.edit { putInt(KEY_DEFAULT_COUNTRY, country_id) }
+    fun saveDefaultCountry(countryId: Int) {
+        preference.edit { putInt(KEY_DEFAULT_COUNTRY, countryId) }
     }
 
     //Забираем страну
-    fun getDefaultCountry(): Int {
-        return preference.getInt(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY)
+    fun getDefaultCountry(): String {
+        return preference.getString(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY) ?: DEFAULT_COUNTRY
     }
 
 
