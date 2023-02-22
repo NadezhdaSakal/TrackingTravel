@@ -9,23 +9,26 @@ import java.util.concurrent.Executors
 import javax.inject.Inject
 
 @HiltViewModel
-class RouteFragmentViewModel @Inject constructor(
-    interactor: Interactor,
+    class RouteFragmentViewModel @Inject constructor() : ViewModel() {
 
-    ) : ViewModel() {
+    var interactor: Interactor? = null
+        @Inject set
 
     val routesListLiveData: MutableLiveData<List<Route>> = MutableLiveData()
 
-
     init {
-        interactor.getRoutesFromApi(object : ApiCallback {
-            override fun onSuccess(routes: List<Route>) {
-                routesListLiveData.postValue(routes)
+        getRoutes()
+    }
+
+    fun getRoutes() {
+        interactor?.getRoutesFromApi (object : ApiCallback {
+            override fun onSuccess (routes: List<Route>) {
+                routesListLiveData.postValue (routes)
             }
 
             override fun onFailure() {
                 Executors.newSingleThreadExecutor().execute {
-                    routesListLiveData.postValue(interactor.getRoutesFromDB())
+                    routesListLiveData.postValue (interactor?.getRoutesFromDB())
                 }
             }
         })
