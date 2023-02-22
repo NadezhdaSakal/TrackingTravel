@@ -26,7 +26,7 @@ class CountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Слушаем какой у нас сейчас выбран вариант в настройках
-        viewModel.countryPropertyLifeData.observe(viewLifecycleOwner, Observer<String> {
+        viewModel.countryPropertyLifeData.observe(viewLifecycleOwner, Observer<Int> {
             when(it) {
                 ENGLAND_COUNTRY -> binding.radioGroup.check(R.id.btnSelectEngland)
                 NETHERLANDS_COUNTRY -> binding.radioGroup.check(R.id.btnSelectNetherlands)
@@ -43,8 +43,8 @@ class CountryFragment : Fragment() {
         }
     }
     companion object {
-        private const val ENGLAND_COUNTRY = "England"
-        private const val NETHERLANDS_COUNTRY = "Netherlands"
-        private const val MONTENEGRO_COUNTRY = "Montenegro"
+        private const val ENGLAND_COUNTRY = 2
+        private const val NETHERLANDS_COUNTRY = 3
+        private const val MONTENEGRO_COUNTRY = 1
     }
 }

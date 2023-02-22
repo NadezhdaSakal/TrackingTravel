@@ -12,7 +12,7 @@ class CountryFragmentViewModel @Inject constructor(): ViewModel() {
      var interactor: Interactor? = null
     @Inject set
 
-    val countryPropertyLifeData: MutableLiveData<String> = MutableLiveData()
+    val countryPropertyLifeData: MutableLiveData<Int> = MutableLiveData()
 
     init {
         //Получаем страну при инициализации, чтобы у нас сразу подтягивалась страна
@@ -21,12 +21,12 @@ class CountryFragmentViewModel @Inject constructor(): ViewModel() {
 
     private fun getCountryProperty() {
         //Кладем страну в LiveData
-        countryPropertyLifeData.value = interactor?.getDefaultCountryFromPreferences().toString()
+        countryPropertyLifeData.value = interactor?.getDefaultCountryFromPreferences()
     }
 
-    fun putCountryProperty(country_id: Int) {
+    fun putCountryProperty(countryId: Int) {
         //Сохраняем в настройки
-        interactor?.saveDefaultCountryToPreferences(country_id)
+        interactor?.saveDefaultCountryToPreferences(countryId)
         //И сразу забираем, чтобы сохранить состояние в модели
         getCountryProperty()
     }
