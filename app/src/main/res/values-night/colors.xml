@@ -2,4 +2,5 @@
 <resources>
     <color name="text_color">#FFFFFFFF</color>
     <color name="country_back">#FF000000</color>
+    <color name="toolbar_text_color">#FFFFFFFF</color>
 </resources>

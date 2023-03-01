@@ -13,6 +13,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="text_color">#FF000000</color>
     <color name="country_back">#FFFFFFFF</color>
+    <color name="toolbar_text_color">#FFFFFFFF</color>
 
 </resources>
 
