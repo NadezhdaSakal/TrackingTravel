@@ -16,10 +16,11 @@ import com.maximvs.trackingtravel.view.adapters.RouteListRecyclerAdapter
 import com.maximvs.trackingtravel.viewmodel.RouteFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import java.beans.PropertyChangeListener
 
 @AndroidEntryPoint
 class RouteFragment : Fragment() {
-    private val routeFragmentViewModel: RouteFragmentViewModel by viewModels()
+    private val routeViewModel: RouteFragmentViewModel by viewModels()
 
     private lateinit var routesAdapter: RouteListRecyclerAdapter
     private lateinit var binding: FragmentRouteBinding
@@ -35,8 +36,7 @@ class RouteFragment : Fragment() {
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentRouteBinding.inflate(inflater, container, false)
         return binding.root
@@ -52,17 +52,12 @@ class RouteFragment : Fragment() {
 
         initRecycler()
 
-        binding.frRouteBtnCountry.setOnClickListener {// вызов фрагмента с выбором страны
-            (activity as MainActivity).startCountryFragment()
-        }
-
-        routeFragmentViewModel.routesListLiveData.observe(
-            viewLifecycleOwner
-        ) {
+//Кладем нашу БД в RV
+        routeViewModel.routesListLiveData.observe(viewLifecycleOwner, PropertyChangeListener<List<Route>> {
             routesDataBase = it
             routesAdapter.addItems(it)
+        })
 
-        }
     }
 
     private fun initSearchView() {
@@ -76,7 +71,7 @@ class RouteFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {  // этот метод - для поиска по
                 //  нажатию на лупу на клавиатуре, query - просто имя переменной, может быть любым
                 return false  // return true - если используем этот метод, сейчас при нажатии лупы
-                              // клавиатура скрывается
+                // клавиатура скрывается
             }
 
             override fun onQueryTextChange(newText: String): Boolean { // этот метод - для поиска по
@@ -102,7 +97,7 @@ class RouteFragment : Fragment() {
             //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
             routesAdapter.items.clear()
             //Делаем новый запрос на сервер
-            routeFragmentViewModel.getRoutes()
+            routeViewModel.getRoutes()
             //Убираем крутящиеся колечко
             binding.pullToRefresh.isRefreshing = false
         }
@@ -122,3 +117,6 @@ class RouteFragment : Fragment() {
         }
     }
 }
+
+
+

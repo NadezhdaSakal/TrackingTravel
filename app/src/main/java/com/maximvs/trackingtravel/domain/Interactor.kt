@@ -30,7 +30,6 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
             }
         })
     }
-
     //Метод для сохранения настроек
     fun saveCountryToPreferences(countryId: Int) {
         preferences.saveCountry(countryId)
