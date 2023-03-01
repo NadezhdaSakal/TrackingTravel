@@ -14,8 +14,8 @@ import retrofit2.Response
 class Interactor(private val repo: MainRepository, private val retrofitService: TrackingTravelAPI,
                  private val preferences: PreferenceProvider) {
     fun getRoutesFromApi(callback: RouteFragmentViewModel.ApiCallback) {
-        //Метод getDefaultCountryFromPreferences() будет нам получать при каждом запросе нужный список
-        retrofitService.getAllRoutes(getDefaultCountryFromPreferences()).enqueue(object : Callback<List<TT_Route>> {
+        //Метод getCountryFromPreferences() будет нам получать при каждом запросе нужный список
+        retrofitService.getAllRoutes(getCountryFromPreferences()).enqueue(object : Callback<List<TT_Route>> {
             override fun onResponse(
                 call: Call<List<TT_Route>>,
                 response: Response<List<TT_Route>>
@@ -32,11 +32,11 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
     }
 
     //Метод для сохранения настроек
-    fun saveDefaultCountryToPreferences(countryId: Int) {
-        preferences.saveDefaultCountry(countryId)
+    fun saveCountryToPreferences(countryId: Int) {
+        preferences.saveCountry(countryId)
     }
     //Метод для получения настроек
-    fun getDefaultCountryFromPreferences() = preferences.getDefaultCountry()
+    fun getCountryFromPreferences() = preferences.getCountry()
 
     fun getRoutesFromDB(): List<Route> = repo.getAllFromDB()
 

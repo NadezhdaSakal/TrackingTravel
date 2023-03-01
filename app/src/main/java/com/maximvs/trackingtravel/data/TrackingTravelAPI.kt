@@ -9,7 +9,7 @@ interface TrackingTravelAPI {
     @GET("test-routes/{country_id}")
     fun getAllRoutes(
         @Path("country_id") countryId: Int
-
     ): Call<List<TT_Route>>
+
 
 }

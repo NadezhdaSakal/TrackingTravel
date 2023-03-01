@@ -21,12 +21,12 @@ class CountryFragmentViewModel @Inject constructor(): ViewModel() {
 
     private fun getCountryProperty() {
         //Кладем страну в LiveData
-        countryPropertyLifeData.value = interactor?.getDefaultCountryFromPreferences()
+        countryPropertyLifeData.value = interactor?.getCountryFromPreferences()
     }
 
     fun putCountryProperty(countryId: Int) {
         //Сохраняем в настройки
-        interactor?.saveDefaultCountryToPreferences(countryId)
+        interactor?.saveCountryToPreferences(countryId)
         //И сразу забираем, чтобы сохранить состояние в модели
         getCountryProperty()
     }

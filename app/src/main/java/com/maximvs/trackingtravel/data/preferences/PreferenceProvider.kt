@@ -9,7 +9,7 @@ class PreferenceProvider(context: Context) {
     //Ключи для настроек, по ним мы их будем получать
     companion object {
         private const val KEY_FIRST_LAUNCH = "first_launch"
-        private const val KEY_DEFAULT_COUNTRY = "default_country"
+        private const val KEY_DEFAULT_COUNTRY = 1
         private const val DEFAULT_COUNTRY = 1
     }
 
@@ -24,20 +24,21 @@ class PreferenceProvider(context: Context) {
         //Логика для первого запуска приложения, чтобы положить настройки,
         //Сюда потом можно добавить и другие настройки
         if (preference.getBoolean(KEY_FIRST_LAUNCH, false)) {
-            preference.edit { putInt(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY) }
+            preference.edit { putInt(KEY_DEFAULT_COUNTRY.toString(), DEFAULT_COUNTRY) }
             preference.edit { putBoolean(KEY_FIRST_LAUNCH, false) }
         }
     }
 
     //Country prefs
     //Сохраняем страну
-    fun saveDefaultCountry(countryId: Int) {
-        preference.edit { putInt(KEY_DEFAULT_COUNTRY, countryId) }
+    fun saveCountry(countryId: Int) {
+        preference.edit { putInt(KEY_DEFAULT_COUNTRY.toString(), countryId) }
     }
 
+
     //Забираем страну
-    fun getDefaultCountry(): Int {
-        return preference.getInt(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY) ?: DEFAULT_COUNTRY
+    fun getCountry(): Int {
+        return preference.getInt(KEY_DEFAULT_COUNTRY.toString(), DEFAULT_COUNTRY) ?: DEFAULT_COUNTRY
     }
 
 
