@@ -11,7 +11,6 @@ constructor(
 ) {
     fun putToDb(routes: List<Route>) {
         routeDao.insertAll(routes)
-
     }
 
     fun getAllFromDB(): Flow<List<Route>> {
