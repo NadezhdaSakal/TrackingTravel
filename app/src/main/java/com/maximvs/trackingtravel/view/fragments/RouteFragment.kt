@@ -65,8 +65,8 @@ class RouteFragment : Fragment() {
                 }
             }
             scope.launch {
-                for (element in routeViewModel.showProgressBar!!) {
-                    launch(Dispatchers.Main) {
+                for (element in routeViewModel.showProgressBar) {
+                    launch(Dispatchers.IO) {
                         binding.progressBar.isVisible = element
                     }
                 }
