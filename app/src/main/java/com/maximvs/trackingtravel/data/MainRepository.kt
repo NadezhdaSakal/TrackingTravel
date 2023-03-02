@@ -3,6 +3,8 @@ package com.maximvs.trackingtravel.data
 import com.maximvs.trackingtravel.data.dao.RouteDao
 import com.maximvs.trackingtravel.data.entity.Route
 import java.util.concurrent.Executors
+import kotlinx.coroutines.flow.Flow
+
 
 
 class MainRepository
@@ -16,7 +18,7 @@ constructor(
         }
     }
 
-    fun getAllFromDB(): List<Route> {
+    fun getAllFromDB(): Flow<List<Route>> {
         return routeDao.getCachedRoutes()
     }
 

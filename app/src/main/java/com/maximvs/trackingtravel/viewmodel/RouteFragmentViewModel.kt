@@ -1,41 +1,27 @@
 package com.maximvs.trackingtravel.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.domain.Interactor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.concurrent.Executors
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+
 @HiltViewModel
-    class RouteFragmentViewModel @Inject constructor() : ViewModel() {
+class RouteFragmentViewModel @Inject constructor(private val interactor: Interactor) : ViewModel() {
 
-    var interactor: Interactor? = null
-        @Inject set
 
-    val routesListLiveData: MutableLiveData<List<Route>> = MutableLiveData()
+    val routesListData: Flow<List<Route>> = interactor.getRoutesFromDB()
+    val showProgressBar: Channel<Boolean> = interactor.progressBarState
+
 
     init {
         getRoutes()
     }
 
     fun getRoutes() {
-        interactor?.getRoutesFromApi (object : ApiCallback {
-            override fun onSuccess (routes: List<Route>) {
-                routesListLiveData.postValue (routes)
-            }
-
-            override fun onFailure() {
-                Executors.newSingleThreadExecutor().execute {
-                    routesListLiveData.postValue (interactor?.getRoutesFromDB())
-                }
-            }
-        })
-    }
-
-    interface ApiCallback {
-        fun onSuccess(routes: List<Route>)
-        fun onFailure()
+        interactor.getRoutesFromApi()
     }
 }

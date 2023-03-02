@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,21 +16,22 @@ import com.maximvs.trackingtravel.view.TopSpacingItemDecoration
 import com.maximvs.trackingtravel.view.adapters.RouteListRecyclerAdapter
 import com.maximvs.trackingtravel.viewmodel.RouteFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import java.util.*
-import java.beans.PropertyChangeListener
 
 @AndroidEntryPoint
 class RouteFragment : Fragment() {
-    private val routeViewModel: RouteFragmentViewModel by viewModels()
 
+    private val routeViewModel: RouteFragmentViewModel by viewModels()
     private lateinit var routesAdapter: RouteListRecyclerAdapter
     private lateinit var binding: FragmentRouteBinding
+    private lateinit var scope: CoroutineScope
+
     private var routesDataBase = listOf<Route>()
-        //Используем backing field
         set(value) {
             //Если придет такое же значение то мы выходим из метода
             if (field == value) return
-            //Если пришло другое значение, то кладем его в переменную
+            //Если прило другое значение, то кладем его в переменную
             field = value
             //Обновляем RV адаптер
             routesAdapter.addItems(field)
@@ -45,19 +47,36 @@ class RouteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         initSearchView()
 
         initPullToRefresh()
 
         initRecycler()
 
-//Кладем нашу БД в RV
-        routeViewModel.routesListLiveData.observe(viewLifecycleOwner, PropertyChangeListener<List<Route>> {
-            routesDataBase = it
-            routesAdapter.addItems(it)
-        })
+        //Кладем нашу БД в RV
 
+        scope = CoroutineScope(Dispatchers.IO).also { scope ->
+            scope.launch {
+                routeViewModel.routesListData.collect {
+                    withContext(Dispatchers.Main) {
+                        routesAdapter.addItems(it)
+                        routesDataBase = it
+                    }
+                }
+            }
+            scope.launch {
+                for (element in routeViewModel.showProgressBar!!) {
+                    launch(Dispatchers.Main) {
+                        binding.progressBar.isVisible = element
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        scope.cancel()
     }
 
     private fun initSearchView() {

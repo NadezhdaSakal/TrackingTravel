@@ -7,10 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class CountryFragmentViewModel @Inject constructor(): ViewModel() {
-    //Внедряем интерактор
-     var interactor: Interactor? = null
-    @Inject set
+class CountryFragmentViewModel @Inject constructor(private val interactor: Interactor): ViewModel() {
 
     val countryPropertyLifeData: MutableLiveData<Int> = MutableLiveData()
 
@@ -21,12 +18,12 @@ class CountryFragmentViewModel @Inject constructor(): ViewModel() {
 
     private fun getCountryProperty() {
         //Кладем страну в LiveData
-        countryPropertyLifeData.value = interactor?.getCountryFromPreferences()
+        countryPropertyLifeData.value = interactor.getCountryFromPreferences()
     }
 
     fun putCountryProperty(countryId: Int) {
         //Сохраняем в настройки
-        interactor?.saveCountryToPreferences(countryId)
+        interactor.saveCountryToPreferences(countryId)
         //И сразу забираем, чтобы сохранить состояние в модели
         getCountryProperty()
     }

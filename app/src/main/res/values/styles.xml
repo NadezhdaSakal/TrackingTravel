@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/orange</item>
-    </style>
-
     <style name="card_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -34,36 +30,6 @@
         <item name="cornerRadius">72dp</item>
     </style>
 
-    <style name="Button_Country">
-        <item name="android:layout_width">48dp</item>
-        <item name="android:layout_height">48dp</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold|italic</item>
-    </style>
-
-    <style name="Button_Allow">
-        <item name="android:layout_width">164dp</item>
-        <item name="android:layout_height">72dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18dp</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="cornerRadius">72dp</item>
-        <item name="backgroundTint">@color/orange</item>
-    </style>
-
-    <style name="Button_Ignore">
-        <item name="android:layout_width">164dp</item>
-        <item name="android:layout_height">72dp</item>
-        <item name="android:textColor">@color/orange</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18dp</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="cornerRadius">72dp</item>
-        <item name="android:background">@android:color/transparent</item>
-    </style>
-
     <style name="et_route_details_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -80,35 +46,7 @@
         <item name="android:queryHint">@color/black</item>
     </style>
 
-    <style name="RouteFragmentRouteStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="searchIcon">@drawable/ic_baseline_search_24</item>
-        <item name="android:textSize">16dp</item>
-        <item name="android:textColor">@color/orange</item>
-        <item name="android:inputType">textMultiLine</item>
-    </style>
-
     <!-- Splash Screen Theme -->
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@mipmap/ic_launcher</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
-
-    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
-        <item name="colorControlNormal">@color/orange</item>
-        <item name="colorControlActivated">@color/orange</item>
-    </style>
-
-    <style name="Country_button">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_marginHorizontal">@dimen/margin_16</item>
-        <item name="android:layout_margin">@dimen/margin_16</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="textAllCaps">false</item>
-        <item name="android:textSize">20dp</item>
-    </style>
 
 </resources>
 
