@@ -1,67 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:id="@+id/country_fragment_root"
-android:background="@color/country_back"
-tools:context=".view.fragments.SettingsFragment">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    tools:context=".view.fragments.CountryFragment">
 
-    <RadioGroup
-        android:id="@+id/radio_group"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="8dp"
+        android:background="@drawable/background_details"
+        android:orientation="vertical"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/margin_16"
+            android:text="@string/country_selection"
             android:gravity="center"
-            android:text="@string/radio_group_header"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:textColor="@color/orange"
             android:textSize="24dp"
-            android:textStyle="bold" />
+            android:textStyle="bold">
+        </TextView>
 
-        <RadioButton
-            android:id="@+id/btnSelectEngland"
+        <Button
+            android:id="@+id/btnSelectCountry1"
+            style="@style/Button_Start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_16"
-            android:layout_marginBottom="16dp"
-            android:buttonTint="@color/orange"
-            android:stateListAnimator="@null"
-            android:text="@string/button_england"
-            android:textAllCaps="false"
-            android:textColor="@color/text_color"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/btnSelectNetherlands"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_16"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:stateListAnimator="@null"
-            android:buttonTint="@color/orange"
-            android:text="@string/button_netherlands"
+            android:text="@string/england"
+            android:textSize="20dp"
             android:textAllCaps="false"
-            android:textColor="@color/text_color"
-            android:textSize="20dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+        </Button>
 
-        <RadioButton
-            android:id="@+id/btnSelectMontenegro"
+        <Button
+            android:id="@+id/btnSelectCountry2"
+            style="@style/Button_Start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:stateListAnimator="@null"
-            android:buttonTint="@color/orange"
-            android:text="@string/button_montenegro"
+            android:text="@string/holland"
+            android:textSize="20dp"
             android:textAllCaps="false"
-            android:textColor="@color/text_color"
-            android:textSize="20dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSelectCountry1">
 
-    </RadioGroup>
-</FrameLayout>
+        </Button>
+
+        <Button
+            android:id="@+id/btnSelectCountry3"
+            style="@style/Button_Start"
+            android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:stateListAnimator="@null"
+            android:text="@string/montenegro"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </Button>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

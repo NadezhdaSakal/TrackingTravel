@@ -3,7 +3,6 @@ package com.maximvs.trackingtravel.view.viewHolders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.maximvs.trackingtravel.R
 import com.maximvs.trackingtravel.data.entity.TT_Photo
 import com.maximvs.trackingtravel.databinding.ItemViewPagerBinding
 
@@ -18,7 +17,6 @@ class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .with(itemView.context) //передается контекст из айтемвью
             .load(item.uri) //Указываем, что будем загружать
             .centerCrop() //Масштабируем с учетом пропорций и отрезаем все, что не влезло
-            .placeholder(R.drawable.app_icons)
             .into(ivImage) //Указываем, куда будем загружать
     }
 }

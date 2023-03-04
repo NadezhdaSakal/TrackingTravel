@@ -4,8 +4,13 @@
     <string name="start">Начать путь</string>
     <string name="start_text_1">Добро пожаловать в Tracking Travel</string>
     <string name="start_text_2">Tracking Travel позволяет легко найти маршруты по Черногории</string>
+    <string name="req_text_1">Предоставьте доступ к GPS Вашего телефона</string>
+    <string name="req_text_2">Ваше местоположение будет использоваться для отображения Вашей позиции на карте</string>
+    <string name="allow">Разрешить</string>
+    <string name="ignore">Пропустить</string>
     <string name="route">Маршруты</string>
     <string name="duration">Длительность</string>
+    <string name="uploaded">Загруженные</string>
     <string name="favorites">Избранное</string>
     <string name="setting">Настройки</string>
     <string name="route_name">Название маршрута</string>
@@ -14,15 +19,21 @@
     <string name="point">Высшая точка</string>
     <string name="show_description">Показать описание маршрута</string>
     <string name="hide_description">Скрыть описание маршрута</string>
-
+    <string name="toast_denied">В разрешении отказано</string>
+    <string name="toast_denied_forever">В разрешении отказано навсегда</string>
+    <string name="alert_dialog_title">В разрешении отказано</string>
+    <string name="alert_dialog_message">В разрешении отказано навсегда.
+    Вы можете изменить это в настройках телефона.
+    Хотите перейти в настройки?</string>
+    <string name="alert_dialog_set_positive">Перейти</string>
+    <string name="toast_GPS_on">Геолокация включена</string>
+    <string name="country_selection">Выберите страну</string>
+    <string name="england">Англия</string>
+    <string name="holland">Голландия</string>
+    <string name="montenegro">Черногория</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Новый фрагмент</string>
 
-    <string name="radio_group_header">Выбор страны</string>
-    <string name="button_england">Англия</string>
-    <string name="button_montenegro">Черногория</string>
-    <string name="button_netherlands">Нидерланды</string>
-    <string name="hello_blank_fragment">Hello!</string>
-    <string name="country">Страны</string>
 
 
 </resources>

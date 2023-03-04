@@ -70,6 +70,14 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    fun startCountryFragment() {
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_container, CountryFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
     fun initNavigation() { // навигация меню боттомбара
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
@@ -93,22 +101,16 @@ class MainActivity : AppCompatActivity() {
                     changeFragment(fragment ?: FavoritesFragment(), tag)
                     true
                 }
-                R.id.country -> {
-                    val tag = "country"
-                    val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment ?: CountryFragment(), tag)
-                    true
-                }
                 else -> false
             }
         }
     }
 
     //Ищем фрагмент по тэгу, если он есть то возвращаем его, если нет - то null
-    fun checkFragmentExistence(tag: String): Fragment? =
+    private fun checkFragmentExistence(tag: String): Fragment? =
         supportFragmentManager.findFragmentByTag(tag)
 
-    fun changeFragment(fragment: Fragment, tag: String) {
+    private fun changeFragment(fragment: Fragment, tag: String) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment, tag)
