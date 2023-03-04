@@ -3,6 +3,8 @@
     <string name="app_name">TrackingTravel</string>
     <string name="start_text_1">Welcome to Tracking Travel</string>
     <string name="start">Start</string>
+    <string name="allow">Allow</string>
+    <string name="ignore">Ignore</string>
     <string name="route">Route</string>
     <string name="duration">Duration</string>
     <string name="setting">Setting</string>
@@ -12,12 +14,20 @@
     <string name="point">High peak</string>
     <string name="show_description">Show description</string>
     <string name="hide_description">Hide description</string>
+    <string name="toast_denied">Permission denied</string>
+    <string name="alert_dialog_title">Permission denied</string>
+    <string name="toast_denied_forever">Permission denied forever</string>
+    <string name="alert_dialog_message">Permission denied forever [...]</string>
+    <string name="toast_GPS_on">Geolocation enabled</string>
+    <string name="alert_dialog_set_positive">Go over</string>
     <string name="start_text_2">Tracking Travel allows you easily find routes in Montenegro</string>
+    <string name="req_text_1">Grant access to your phone\'s GPS</string>
+    <string name="req_text_2">Your location will be used to display your position on the map</string>
+    <string name="uploaded">Uploaded</string>
     <string name="favorites">Favorites</string>
-    <string name="radio_group_header">Country selection</string>
-    <string name="button_england">England</string>
-    <string name="button_netherlands">Netherlands</string>
-    <string name="button_montenegro">Montenegro</string>
-    <string name="hello_blank_fragment">Hello!</string>
-    <string name="country">Country</string>
+    <string name="country_selection">Country selection</string>
+    <string name="england">England</string>
+    <string name="holland">Holland</string>
+    <string name="montenegro">Montenegro</string>
+    <string name="hello_blank_fragment">Hello_blank_fragment</string>
 </resources>

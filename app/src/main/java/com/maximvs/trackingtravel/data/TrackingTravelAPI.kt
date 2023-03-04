@@ -3,13 +3,10 @@ package com.maximvs.trackingtravel.data
 import com.maximvs.trackingtravel.data.entity.TT_Route
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 interface TrackingTravelAPI {
-    @GET("test-routes/{country_id}")
+    @GET("test-routes")
     fun getAllRoutes(
-        @Path("country_id") countryId: Int
+
     ): Call<List<TT_Route>>
-
-
 }

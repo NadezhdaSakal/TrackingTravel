@@ -14,9 +14,9 @@ class ConverterRoom {
     @TypeConverter
     fun stringToCountry(value: String): Country {
         val id = value.substringBefore(':').toInt()
-        val nameOfCountry = value.substringAfter(':')
+        val name = value.substringAfter(':')
 
-        return Country(id, nameOfCountry)
+        return Country(id, name)
     }
 
     @TypeConverter
@@ -52,7 +52,38 @@ class ConverterRoom {
         return Gson().toJson(value)
 
     }
+/*
+    @TypeConverter
+    fun mapPhotoToString(mapPhoto: MapPhoto) = "$mapPhoto"
 
+    @TypeConverter
+    fun stringToMapPhoto(value: String): MapPhoto {
+        val id = value.substringBefore(':').toInt()
+        val name = value.substringAfter(':')
+        val uri = value.substringAfter(',')
+        val url = value.substringAfter(',')
+        val type = value.substringAfter(',')
+        val size = value.substringAfter(',').toInt()
+
+        return MapPhoto(id, name, uri, url, type, size)
+    }
+
+    @TypeConverter
+    fun photoToString(photos: TT_Photo) = "$photos"
+
+
+
+    @TypeConverter
+    fun stringToPhoto(value: String): TT_Photo {
+        val id = value.substringBefore(':').toInt()
+        val name = value.substringAfter(':')
+        val uri = value.substringAfter(',')
+        val url = value.substringAfter(',')
+        val type = value.substringAfter(',')
+        val size = value.substringAfter(',').toInt()
+
+        return TT_Photo(id, name, uri, url, type, size)
+    } */
 }
 
 

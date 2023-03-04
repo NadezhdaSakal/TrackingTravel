@@ -8,8 +8,8 @@ object Converter {
     fun convertApiListToDtoList(list: List<TT_Route>?): List<Route> {
         val result = mutableListOf<Route>()
         list?.forEach {
-            result.add (
-                Route (
+            result.add(
+                Route(
                     id = it.id,
                     title = it.title,
                     description = it.description,
@@ -19,8 +19,8 @@ object Converter {
                     duration = it.durationRoute,
                     mapPhoto = it.mapPhoto,
                     photos = it.photo,
-                    country = it.country,
-                    isInFavorites = false
+                    country = it.country
+
                 )
             )
         }
