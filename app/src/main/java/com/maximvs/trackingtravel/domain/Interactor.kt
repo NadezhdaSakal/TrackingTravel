@@ -59,11 +59,11 @@ class Interactor(
 
     //Метод для сохранения настроек
     fun saveCountryToPreferences(countryId: Int) {
-        preferences.saveCountry(countryId)
+        preferences.saveDefaultCountry(countryId)
     }
 
     //Метод для получения настроек
-    fun getCountryFromPreferences() = preferences.getCountry()
+    fun getCountryFromPreferences() = preferences.getDefaultCountry()
 
     fun getRoutesFromDB(): Flow<List<Route>> = repo.getAllFromDB()
 

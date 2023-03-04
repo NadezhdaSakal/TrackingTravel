@@ -31,13 +31,13 @@ class PreferenceProvider(context: Context) {
 
     //Country prefs
     //Сохраняем страну
-    fun saveCountry(countryId: Int) {
+    fun saveDefaultCountry(countryId: Int) {
         preference.edit { putInt(KEY_DEFAULT_COUNTRY, countryId) }
     }
 
 
     //Забираем страну
-    fun getCountry(): Int {
+    fun getDefaultCountry(): Int {
         return preference.getInt(KEY_DEFAULT_COUNTRY, DEFAULT_COUNTRY)
     }
 
