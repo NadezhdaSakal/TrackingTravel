@@ -14,9 +14,9 @@ class ConverterRoom {
     @TypeConverter
     fun stringToCountry(value: String): Country {
         val id = value.substringBefore(':').toInt()
-        val name = value.substringAfter(':')
+        val nameOfCountry = value.substringAfter(':')
 
-        return Country(id, name)
+        return Country(id, nameOfCountry)
     }
 
     @TypeConverter

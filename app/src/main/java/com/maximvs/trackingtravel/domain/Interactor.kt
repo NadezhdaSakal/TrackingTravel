@@ -16,47 +16,52 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class Interactor(private val repo: MainRepository, private val retrofitService: TrackingTravelAPI,
-                 private val preferences: PreferenceProvider) {
-
+class Interactor(
+    private val repo: MainRepository, private val retrofitService: TrackingTravelAPI,
+    private val preferences: PreferenceProvider
+) {
     val scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
     var progressBarState = Channel<Boolean>(Channel.CONFLATED)
 
 
     fun getRoutesFromApi() {
+
         //Показываем ProgressBar
         scope.launch {
             progressBarState.send(true)
         }
 
         //Метод getCountryFromPreferences() будет нам получать при каждом запросе нужный список
-        retrofitService.getAllRoutes(getCountryFromPreferences()).enqueue(object : Callback<List<TT_Route>> {
-            override fun onResponse(
-                call: Call<List<TT_Route>>,
-                response: Response<List<TT_Route>>
-            ) {
-                val list = Converter.convertApiListToDtoList(response.body())
+        retrofitService.getAllRoutes(getCountryFromPreferences())
+            .enqueue(object : Callback<List<TT_Route>> {
+                override fun onResponse(
+                    call: Call<List<TT_Route>>,
+                    response: Response<List<TT_Route>>
+                ) {
+                    val list = Converter.convertApiListToDtoList(response.body())
 
-                //Кладем в бд
-                //В случае успешного ответа кладем в БД и выключаем ProgressBar
-                scope.launch {
-                    repo.putToDb(list)
-                    progressBarState.send(false)
+                    //Кладем в бд
+                    //В случае успешного ответа кладем фильмы в БД и выключаем ProgressBar
+                    scope.launch {
+                        repo.putToDb(list)
+                        progressBarState.send(false)
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<List<TT_Route>>, t: Throwable) {
-                scope.launch {
-                    progressBarState.send(false)
+                override fun onFailure(call: Call<List<TT_Route>>, t: Throwable) {
+                    //В случае провала выключаем ProgressBar
+                    scope.launch {
+                        progressBarState.send(false)
+                    }
                 }
-            }
-        })
+            })
     }
 
     //Метод для сохранения настроек
     fun saveCountryToPreferences(countryId: Int) {
         preferences.saveCountry(countryId)
     }
+
     //Метод для получения настроек
     fun getCountryFromPreferences() = preferences.getCountry()
 

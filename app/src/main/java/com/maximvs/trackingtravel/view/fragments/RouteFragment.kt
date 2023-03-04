@@ -79,6 +79,7 @@ class RouteFragment : Fragment() {
         scope.cancel()
     }
 
+
     private fun initSearchView() {
         binding.search.setOnClickListener {
             binding.search.isIconified = false

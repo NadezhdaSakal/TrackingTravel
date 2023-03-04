@@ -8,14 +8,11 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-
 @HiltViewModel
 class RouteFragmentViewModel @Inject constructor(private val interactor: Interactor) : ViewModel() {
 
-
     val routesListData: Flow<List<Route>> = interactor.getRoutesFromDB()
     val showProgressBar: Channel<Boolean> = interactor.progressBarState
-
 
     init {
         getRoutes()
