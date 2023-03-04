@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.maximvs.trackingtravel.R
 import com.maximvs.trackingtravel.data.entity.Route
 import com.maximvs.trackingtravel.databinding.FragmentRouteBinding
 import com.maximvs.trackingtravel.view.MainActivity
@@ -16,27 +16,29 @@ import com.maximvs.trackingtravel.view.TopSpacingItemDecoration
 import com.maximvs.trackingtravel.view.adapters.RouteListRecyclerAdapter
 import com.maximvs.trackingtravel.viewmodel.RouteFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import java.util.*
 
 @AndroidEntryPoint
 class RouteFragment : Fragment() {
-    private val routeFragmentViewModel: RouteFragmentViewModel by viewModels()
+
+    private val routeViewModel: RouteFragmentViewModel by viewModels()
     private lateinit var routesAdapter: RouteListRecyclerAdapter
     private lateinit var binding: FragmentRouteBinding
+    private lateinit var scope: CoroutineScope
+
     private var routesDataBase = listOf<Route>()
-        //Используем backing field
         set(value) {
             //Если придет такое же значение то мы выходим из метода
             if (field == value) return
-            //Если пришло другое значение, то кладем его в переменную
+            //Если прило другое значение, то кладем его в переменную
             field = value
             //Обновляем RV адаптер
             routesAdapter.addItems(field)
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentRouteBinding.inflate(inflater, container, false)
         return binding.root
@@ -45,20 +47,38 @@ class RouteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         initSearchView()
 
-        initRecycler()
-        routeFragmentViewModel.routesListLiveData.observe(
-            viewLifecycleOwner
-        ) {
-            routesDataBase = it
-        }
+        initPullToRefresh()
 
-        binding.frRouteBtnCountry.setOnClickListener {// вызов фрагмента с выбором страны
-            (activity as MainActivity).startCountryFragment()
+        initRecycler()
+
+        //Кладем нашу БД в RV
+
+        scope = CoroutineScope(Dispatchers.IO).also { scope ->
+            scope.launch {
+                routeViewModel.routesListData.collect {
+                    withContext(Dispatchers.Main) {
+                        routesAdapter.addItems(it)
+                        routesDataBase = it
+                    }
+                }
+            }
+            scope.launch {
+                for (element in routeViewModel.showProgressBar) {
+                    launch(Dispatchers.Main) {
+                        binding.progressBar.isVisible = element
+                    }
+                }
+            }
         }
     }
+
+    override fun onStop() {
+        super.onStop()
+        scope.cancel()
+    }
+
 
     private fun initSearchView() {
         binding.search.setOnClickListener {
@@ -71,7 +91,7 @@ class RouteFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {  // этот метод - для поиска по
                 //  нажатию на лупу на клавиатуре, query - просто имя переменной, может быть любым
                 return false  // return true - если используем этот метод, сейчас при нажатии лупы
-                              // клавиатура скрывается
+                // клавиатура скрывается
             }
 
             override fun onQueryTextChange(newText: String): Boolean { // этот метод - для поиска по
@@ -91,6 +111,18 @@ class RouteFragment : Fragment() {
         })
     }
 
+    private fun initPullToRefresh() {
+        //Вешаем слушатель, чтобы вызвался pull to refresh
+        binding.pullToRefresh.setOnRefreshListener {
+            //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
+            routesAdapter.items.clear()
+            //Делаем новый запрос на сервер
+            routeViewModel.getRoutes()
+            //Убираем крутящиеся колечко
+            binding.pullToRefresh.isRefreshing = false
+        }
+    }
+
     private fun initRecycler() {
         binding.recyclerView.apply {
             routesAdapter =
@@ -105,3 +137,6 @@ class RouteFragment : Fragment() {
         }
     }
 }
+
+
+

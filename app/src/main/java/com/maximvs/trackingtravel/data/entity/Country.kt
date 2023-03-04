@@ -9,9 +9,12 @@ data class Country(
     @SerializedName("id")
     val id: Int,
     @SerializedName("nameOfCountry")
-    val name: String
+    val nameOfCountry: String
     ) : Parcelable {
     override fun toString(): String {
-        return "$id:$name"
+        return "$id:$nameOfCountry"
     }
 }
+
+
+
